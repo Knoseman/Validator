@@ -1,0 +1,342 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Withdraw",
+  "description": "A Withdraw call sent from the merchant to Trustly",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "method": {
+      "type": "string",
+      "pattern": "^Withdraw$"
+    },
+    "params": {
+      "type": "object",
+      "properties": {
+        "Signature": {
+          "type": "string",
+          "minLength": 1
+        },
+        "UUID": {
+          "$ref": "#/definitions/uuid"
+        },
+        "Data": {
+          "type": "object",
+          "properties": {
+            "Username": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Password": {
+              "type": "string",
+              "minLength": 1
+            },
+            "NotificationURL": {
+              "type": "string",
+              "pattern": "^(https|HTTPS)((?!\\?).)*$",
+              "minLength": 1
+            },
+            "EndUserID": {
+              "type": "string",
+              "minLength": 1
+            },
+            "MessageID": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Currency": {
+                  "type": "string",
+                  "enum": [
+                    "EUR",
+                    "SEK",
+                    "DKK",
+                    "NOK",
+                    "EEK",
+                    "LVL",
+                    "LTL",
+                    "PLN",
+                    "ZMK",
+                    "ZWR",
+                    "AED",
+                    "AFN",
+                    "ALL",
+                    "AMD",
+                    "ANG",
+                    "AOA",
+                    "ARS",
+                    "AUD",
+                    "AWG",
+                    "AZN",
+                    "BAM",
+                    "BBD",
+                    "BDT",
+                    "BGN",
+                    "BHD",
+                    "BIF",
+                    "BMD",
+                    "BND",
+                    "BRL",
+                    "BSD",
+                    "BWP",
+                    "BYR",
+                    "BZD",
+                    "CAD",
+                    "CDF",
+                    "CHF",
+                    "CNY",
+                    "CRC",
+                    "CUP",
+                    "CVE",
+                    "CZK",
+                    "DJF",
+                    "DOP",
+                    "DZD",
+                    "EGP",
+                    "ERN",
+                    "ETB",
+                    "FJD",
+                    "FKP",
+                    "GBP",
+                    "GEL",
+                    "GHS",
+                    "GIP",
+                    "GMD",
+                    "GNF",
+                    "GTQ",
+                    "GYD",
+                    "HKD",
+                    "HNL",
+                    "HRK",
+                    "HUF",
+                    "IDR",
+                    "ILS",
+                    "INR",
+                    "IQD",
+                    "IRR",
+                    "ISK",
+                    "JMD",
+                    "JOD",
+                    "JPY",
+                    "KES",
+                    "KGS",
+                    "KHR",
+                    "KMF",
+                    "KPW",
+                    "KRW",
+                    "KWD",
+                    "KYD",
+                    "KZT",
+                    "LAK",
+                    "LBP",
+                    "LKR",
+                    "LRD",
+                    "LYD",
+                    "MAD",
+                    "MDL",
+                    "MGA",
+                    "MKD",
+                    "MMK",
+                    "MNT",
+                    "MOP",
+                    "MRO",
+                    "MUR",
+                    "MVR",
+                    "MWK",
+                    "MYR",
+                    "MZN",
+                    "NGN",
+                    "NIO",
+                    "NPR",
+                    "NZD",
+                    "OMR",
+                    "PEN",
+                    "PGK",
+                    "PHP",
+                    "PKR",
+                    "PYG",
+                    "QAR",
+                    "RON",
+                    "RSD",
+                    "RUB",
+                    "RWF",
+                    "SAR",
+                    "SBD",
+                    "SCR",
+                    "SDG",
+                    "SGD",
+                    "SHP",
+                    "SLL",
+                    "SOS",
+                    "SRD",
+                    "STD",
+                    "SYP",
+                    "SZL",
+                    "THB",
+                    "TJS",
+                    "TMT",
+                    "TOP",
+                    "TRY",
+                    "TTD",
+                    "TWD",
+                    "TZS",
+                    "UAH",
+                    "UGX",
+                    "USD",
+                    "UZS",
+                    "VEF",
+                    "VND",
+                    "VUV",
+                    "WST",
+                    "XCD",
+                    "XDR",
+                    "XPF",
+                    "XTS",
+                    "YER",
+                    "ZAR"
+                  ]
+                },
+            "Attributes": {
+              "type": "object",
+              "properties": {
+                "Firstname": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "Lastname": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "Email": {
+                  "type": "string",
+                  "format" : "email"
+                },
+                "DateOfBirth": {
+                  "type": "string",
+                  "pattern" : "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                },
+                "Locale": {
+                  "type": "string",
+                  "pattern": "^[a-z]{2}_[A-Z]{2}$"
+                },
+                "SuggestedMinAmount": {
+                  "type": [
+                    "number",
+                    "string",
+                    "null"
+                  ]
+                },
+                "SuggestedMaxAmount": {
+                  "type": "string"
+                },
+                "SuggestedAmount": {
+                  "type": [
+                    "number",
+                    "string"
+                  ],
+                  "pattern": "^[0-9]+\\.[0-9]{2}$"
+                },
+                "Country": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$"
+                },
+                "IP": {
+                  "type": "string", 
+                  "format" : "ipv4"
+                },
+                "SuccessURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "FailURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "TemplateURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "URLTarget": {
+                  "type": "string",
+                  "enum": [
+                    "_top",
+                    "_self",
+                    "_parent"
+                  ]
+                },
+                "ClearingHouse": {
+                  "type": "string"
+                },
+                "BankNumber": {
+                  "type": "string"
+                },
+                "AccountNumber": {
+                  "type": "string"
+                },
+                "MobilePhone": {
+                  "type": "string"
+                },
+                "NationalIdentificationNumber": {
+                  "type": "string"
+                },
+                "AddressCountry": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$"
+                },
+                "AddressPostalCode": {
+                  "type": "string"
+                },
+                "AddressCity": {
+                  "type": "string"
+                },
+                "AddressLine1": {
+                  "type": "string"
+                },
+                "AddressLine2": {
+                  "type": "string"
+                },
+                "Address": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "Firstname",
+                "Lastname",
+                "Country",
+                "Locale"
+              ]
+            }
+          },
+          "required": [
+            "Username",
+            "Password",
+            "NotificationURL",
+            "EndUserID",
+            "MessageID",
+            "Currency",
+            "Attributes"
+          ]
+        }
+      },
+      "required": [
+        "Signature",
+        "UUID",
+        "Data"
+      ]
+    },
+    "version": {
+      "enum": [
+        "1.1",
+        1.1
+      ]
+    }
+  },
+  "required": [
+    "method",
+    "params",
+    "version"
+  ]
+}

@@ -1,0 +1,148 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "SelectAccount",
+  "description": "A SelectAccount call sent from the merchant to Trustly",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "method": {
+      "type": "string",
+      "pattern": "^SelectAccount$"
+    },
+    "params": {
+      "type": "object",
+      "properties": {
+        "Signature": {
+          "type": "string",
+          "minLength": 1
+        },
+        "UUID": {
+          "$ref": "#/definitions/uuid"
+        },
+        "Data": {
+          "type": "object",
+          "properties": {
+            "Username": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Password": {
+              "type": "string",
+              "minLength": 1
+            },
+            "NotificationURL": {
+              "type": "string",
+              "pattern": "^(https|HTTPS)((?!\\?).)*$",
+              "minLength": 1
+            },
+            "EndUserID": {
+              "type": "string",
+              "minLength": 1
+            },
+            "MessageID": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Attributes": {
+              "type": "object",
+              "properties": {
+                "Locale": {
+                  "type": "string",
+                  "pattern": "^[a-z]{2}_[A-Z]{2}$"
+                },
+                "Country": {
+                  "type": "string",
+                  "pattern": "^[A-Z]{2}$"
+                },
+                "IP": {
+                  "type": "string", 
+                  "format" : "ipv4"
+                },
+                "SuccessURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "FailURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "TemplateURL": {
+                  "type": "string",
+                  "format": "uri"
+                },
+                "URLTarget": {
+                  "type": "string",
+                  "enum": [
+                    "_top",
+                    "_self",
+                    "_parent"
+                  ]
+                },
+                "MobilePhone": {
+                  "type": "string"
+                },
+                "Firstname": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "Lastname": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "NationalIdentificationNumber": {
+                  "type": "string"
+                },
+                "DateOfBirth": {
+                  "type": "string"
+                },
+                "Email": {
+                  "type": "string",
+                  "format" : "email"
+                },
+                "RequestDirectDebitMandate": {
+                  "enum": [
+                    1,
+                    0,
+                    "1",
+                    "0"
+                  ]
+                }
+              },
+              "required": [
+              ]
+            }
+          },
+          "required": [
+            "Username",
+            "Password",
+            "NotificationURL",
+            "EndUserID",
+            "MessageID",
+            "Attributes"
+          ]
+        }
+      },
+      "required": [
+        "Signature",
+        "UUID",
+        "Data"
+      ]
+    },
+    "version": {
+      "enum": [
+        "1.1",
+        1.1
+      ]
+    }
+  },
+  "required": [
+    "method",
+    "params",
+    "version"
+  ]
+}
