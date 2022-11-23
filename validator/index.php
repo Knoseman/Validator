@@ -46,7 +46,7 @@ input[type=checkbox] {
 <body>
   <h2>JSON validator</h2>
   <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" id="APIselector">
-    Paste json data into the textbox to validate it. Supported methods: Deposit, Withdraw, Refund, SelectAccount, AccountPayout and Charge. 
+    Paste json data into the textbox to validate it. Supported methods: Deposit, Withdraw, Refund, SelectAccount, RegisterAccount, AccountPayout and Charge. 
     <br/>
 
     <textarea name="Data" rows="30" cols="80" placeholder="<<< PASTE APICALLS.DATA HERE >>>"></textarea>
