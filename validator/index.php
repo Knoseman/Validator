@@ -75,7 +75,7 @@ input[type=checkbox] {
     $validator = new JsonSchema\Validator;
     $dataArr = json_decode($jsondata, true);
     echo "<br/><h4>API method : " . $method . "</h4>"; 
-    echo '<code>' . $jsondata . '</code><br/><br/>';
+    echo '<code>' . htmlentities($jsondata) . '</code><br/><br/>';
 
     switch ($method) {
       case "Deposit":
