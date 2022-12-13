@@ -68,7 +68,7 @@ input[type=checkbox] {
     $jsondata = '{"method": "' . $method . '","params": {"Signature": "f4ThjuMqbsdG6u ... S16VbzD4h==","UUID": "258a2184-2842-b485-25ca-293525152425","Data": ' . $_POST["Data"] . '},"version": "1.1"}';
     $jsondata = trim($jsondata);
     $jsondata =  str_replace("|", "", $jsondata);
-    require(__DIR__ . '/../vendor/autoload.php');
+    require(__DIR__ . '/vendor/autoload.php');
     $data = json_decode($jsondata);
 
   // Validate
