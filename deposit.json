@@ -1,0 +1,25 @@
+{
+  "method": "Deposit",
+  "params": {
+    "Signature": "f4ThjuMqbsdG6u ... S16VbzD4h==",
+    "UUID": "258a2184-2842-b485-25ca-293525152425",
+    "Data": {
+      "Username": "merchant_username",
+      "Password": "merchant_password",
+      "NotificationURL": "https://URL_to_your_notification_service",
+      "EndUserID": "12345",
+      "MessageID": "your_unique_deposit_id",
+      "Attributes": {
+        "Locale": "sv_SE",
+        "Currency": "SEK",
+        "IP": "123.123.123.123",
+        "MobilePhone": "+46709876543",
+        "Firstname": "John",
+        "Lastname": "Doe",
+        "Email": "test@trustly.com",
+        "NationalIdentificationNumber": "790131-1234"
+      }
+    }
+  },
+  "version": "1.1"
+}

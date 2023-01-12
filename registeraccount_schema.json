@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "RegisterAccount",
+  "description": "A RegisterAccount call sent from the merchant to Trustly",
+  "definitions": {
+    "uuid": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}$"
+    }
+  },
+  "type": "object",
+  "properties": {
+    "method": {
+      "type": "string",
+      "pattern": "^RegisterAccount$"
+    },
+    "params": {
+      "type": "object",
+      "properties": {
+        "Signature": {
+          "type": "string",
+          "minLength": 1
+        },
+        "UUID": {
+          "$ref": "#/definitions/uuid"
+        },
+        "Data": {
+          "type": "object",
+          "properties": {
+            "Username": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Password": {
+              "type": "string",
+              "minLength": 1
+            },
+            "EndUserID": {
+              "type": "string",
+              "minLength": 1
+            },
+            "ClearingHouse": {
+              "type": "string",
+              "minLength": 1
+            },
+            "BankNumber": {
+              "type": "string"
+            },
+            "AccountNumber": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Firstname": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Lastname": {
+              "type": "string",
+              "minLength": 1
+            },
+            "Attributes": {
+              "type": "object",
+              "properties": {
+                "DateOfBirth": {
+                  "type": "string",
+                  "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+                },
+              "required": [
+                "DateOfBirth"
+              ]
+            }
+          },
+          "required": [
+            "Username",
+            "Password",
+            "EndUserID",
+            "ClearingHouse",
+            "AccountNumber",
+            "BankNumber",
+            "Firstname",
+            "Lastname",
+            "Attributes"
+          ]
+        }
+      },
+      "required": [
+        "Signature",
+        "UUID",
+        "Data"
+      ]
+    },
+    "version": {
+      "enum": [
+        "1.1",
+        1.1
+      ]
+    }
+  },
+  "required": [
+    "method",
+    "params",
+    "version"
+  ]
+}
+}
